@@ -1,0 +1,12 @@
+{
+    "name": "reinhurd/simplephp_budget_maker",
+    "description": "test project for working with modern code stuff",
+    "type": "project",
+    "authors": [
+        {
+            "name": "reinhurd",
+            "email": "roarus@yandex.ru"
+        }
+    ],
+    "require": {}
+}
