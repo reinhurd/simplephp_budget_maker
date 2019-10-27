@@ -8,5 +8,12 @@
             "email": "roarus@yandex.ru"
         }
     ],
-    "require": {}
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    },
+    "require": {
+        "phpunit/phpunit": "^8.4"
+    }
 }

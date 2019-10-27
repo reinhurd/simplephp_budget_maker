@@ -1,0 +1,8 @@
+#! /bin/php
+<?php
+$autoloadPathEngine1 = __DIR__ . '/../src/engine.php';
+if (file_exists($autoloadPathEngine1)) {
+    require_once $autoloadPathEngine1;
+}
+$date = date("d M Y");
+echo "Hello! Your budget for $date is";
