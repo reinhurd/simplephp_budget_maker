@@ -14,6 +14,9 @@
         ]
     },
     "require": {
-        "phpunit/phpunit": "^8.4"
+        "phpunit/phpunit": "^8.4",
+        "wp-cli/php-cli-tools": "^0.11.11",
+        "league/csv": "^9.4",
+        "nesbot/carbon": "^2.25"
     }
 }

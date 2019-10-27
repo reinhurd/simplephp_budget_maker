@@ -11,38 +11,34 @@ class ConsoleWorkerTest extends TestCase
 
     public function testConstruct()
     {
-        global $argv;
-        $GLOBALS['argv']=array(
-            'argv_test.php',
-            'show_today',
-        );
-        $GLOBALS['argc']=count($argv);
-        $expected_command = 'show_today';
-        $testClass = new ConsoleWorker();
-        $this->assertEquals($expected_command, $testClass->command);
+        //ToDo dont know how to test cli\line also
+        $expected_string = "Hello!\n";
+        $this->expectOutputString($expected_string);
     }
 
     public function testTodayBudget()
     {
         $return_string = $this->console_worker->showTodayBudget();
         $date = date("d m Y");
-        $expected_string = "Hello! Your budget for $date is";
+        $expected_string = "Your budget for $date is";
         $this->assertSame($expected_string, $return_string);
     }
 
-    public function testCheckAndRunCommand()
+    public function getStartQuestion()
     {
-        global $argv;
-        $GLOBALS['argv']=array(
-            'argv_test.php',
-            'show_today',
-        );
-        $GLOBALS['argc']=count($argv);
-        $testClass = new ConsoleWorker();
+        //ToDO really dont know how to test input for this library
+    }
+
+    public function testChechAndRunCommand()
+    {
+        $this->console_worker->command = 'show_today';
         $date = date("d m Y");
-        $expected_string = "Hello! Your budget for $date is";
-        $this->expectOutputString($expected_string);
-        $testClass->checkAndRunCommand();
+        $expected_string = "Your budget for $date is";
+        $this->assertEquals($expected_string, $this->console_worker->checkAndRunCommand());
+
+        $this->console_worker->command = '';
+        $expected_string = "Please, enter correct command";
+        $this->assertEquals($expected_string, $this->console_worker->checkAndRunCommand());
     }
 
     public function tearDown(): void

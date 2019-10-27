@@ -10,4 +10,10 @@ class DateWorkerTest extends TestCase
         $expected_date = date('d m Y');
         $this->assertSame($expected_date, $return_date);
     }
+
+    public function testGetArrayOfDays()
+    {
+        $return_array = DateWorker::getArrayOfDays('2018-06-14', '2018-06-20');
+        $this->assertIsArray($return_array);
+    }
 }

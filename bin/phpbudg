@@ -4,5 +4,22 @@ $autoloadPathEngine1 = __DIR__ . '/../src/engine.php';
 if (file_exists($autoloadPathEngine1)) {
     require_once $autoloadPathEngine1;
 }
-$date = date("d M Y");
-echo "Hello! Your budget for $date is";
+
+//$console = new ConsoleWorker();
+//$console->getStartQuestion();
+//echo $console->checkAndRunCommand();
+
+$header = ['first name', 'last name', 'email'];
+$records = [
+    [1, 2, 3],
+    ['foo', 'bar', 'baz'],
+    ['john', 'doe', 'john.doe@example.com'],
+];
+
+$csv = Writer::createFromString('');
+$csv->insertOne($header);
+$csv->insertAll($records);
+$data = $csv->getContent();
+
+$database = new BudgetStorage();
+$database->setBase($data);
