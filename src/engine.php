@@ -7,3 +7,5 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath2;
 }
+
+require_once __DIR__. '/config.php';

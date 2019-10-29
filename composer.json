@@ -11,7 +11,9 @@
     "autoload": {
         "classmap": [
             "src"
-        ]
+        ],
+        "files":
+        ["src/engine.php"]
     },
     "require": {
         "phpunit/phpunit": "^8.4",

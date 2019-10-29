@@ -9,10 +9,12 @@ class DateWorker
 
     public static function getArrayOfDays($first_day, $last_days)
     {
+        $return = array();
         $period = CarbonPeriod::create($first_day, $last_days);
-//        foreach ($period as $date) {
-//            echo $date->format('Y-m-d');
-//        }
-        return $period->toArray();
+        foreach ($period as $date) {
+            $return[] = $date->format('d-m-Y');
+        }
+//        return $period->toArray();
+        return $return;
     }
 }

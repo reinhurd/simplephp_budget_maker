@@ -15,5 +15,6 @@ class DateWorkerTest extends TestCase
     {
         $return_array = DateWorker::getArrayOfDays('2018-06-14', '2018-06-20');
         $this->assertIsArray($return_array);
+        $this->assertNotEmpty($return_array);
     }
 }
