@@ -19,7 +19,7 @@ class ConsoleWorkerTest extends TestCase
     public function testTodayBudget()
     {
         $return_string = $this->console_worker->showTodayBudget();
-        $date = date("d m Y");
+        $date = date("d-m-Y");
         $expected_string = "Your budget for $date is";
         $this->assertSame($expected_string, $return_string);
     }
@@ -32,14 +32,31 @@ class ConsoleWorkerTest extends TestCase
     public function testChechAndRunCommand()
     {
         $this->console_worker->command = 'show_today';
-        $date = date("d m Y");
-        $expected_string = "Your budget for $date is";
-        $this->assertEquals($expected_string, $this->console_worker->checkAndRunCommand());
-
-        $this->console_worker->command = '';
-        $expected_string = "Please, enter correct command";
-        $this->assertEquals($expected_string, $this->console_worker->checkAndRunCommand());
+        $date = date("d-m-Y");
+        $expected_string = "Hello!\nYour budget for $date is";
+        $this->expectOutputString($expected_string);
+        $this->console_worker->checkAndRunCommand();
     }
+
+    public function testIncorrectCommand()
+    {
+        $this->console_worker->command = '';
+        $expected_string = "Hello!\nPlease, enter correct command";
+        $this->expectOutputString($expected_string);
+        $this->console_worker->checkAndRunCommand();
+    }
+
+    public function testShowMessages()
+    {
+        $expected_string = "Hello!\nHELLO";
+        $this->expectOutputString($expected_string);
+        $this->console_worker->showMessage("HELLO");
+    }
+
+//    public function testShowAllDatesOnBudget()
+//    {
+//        //Need to find how to test
+//    }
 
     public function tearDown(): void
     {

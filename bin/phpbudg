@@ -5,9 +5,9 @@ if (file_exists($autoloadPathEngine1)) {
     require_once $autoloadPathEngine1;
 }
 
-//$console = new ConsoleWorker();
-//$console->getStartQuestion();
-//echo $console->checkAndRunCommand();
+$console = new ConsoleWorker();
+$console->getStartQuestion();
+$console->checkAndRunCommand();
 
 //$header = ['first name', 'last name', 'email'];
 //$records = [
@@ -23,3 +23,5 @@ if (file_exists($autoloadPathEngine1)) {
 //
 //$database = new BudgetStorage();
 //$database->setBase($data);
+
+

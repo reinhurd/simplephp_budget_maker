@@ -4,7 +4,7 @@ class DateWorker
 {
     public static function getTodaydate()
     {
-        return date('d m Y');
+        return date('d-m-Y');
     }
 
     public static function getArrayOfDays($first_day, $last_days)

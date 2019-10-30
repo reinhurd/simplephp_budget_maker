@@ -4,10 +4,13 @@ use League\Csv\Reader;
 
 class BudgetStorage
 {
+    public $config;
     public $filename = __DIR__ . "/../database.csv";
 
     public function __construct()
     {
+        global $config_budget;
+        $this->config = $config_budget;
         if (!file_exists($this->filename)) {
             file_put_contents($this->filename, '');
         }
@@ -22,5 +25,14 @@ class BudgetStorage
     public function setBase($data)
     {
         file_put_contents($this->filename, $data);
+        return realpath($this->filename);
+    }
+
+    public function saverFromTable($data) {
+        $csv = Writer::createFromString('');
+        $csv->insertOne(array_keys($this->config['HEADER_STRUCTURE_DEFAULT']));
+        $csv->insertAll($data);
+        $data = $csv->getContent();
+        return $this->setBase($data);
     }
 }

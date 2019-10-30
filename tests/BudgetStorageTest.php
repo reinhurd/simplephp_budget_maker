@@ -36,7 +36,19 @@ class BudgetStorageTest extends TestCase
     {
 
         $expected_string = 'john.doe@example.com';
-        $this->testClass->setBase($this->testData);
+        $return_path = $this->testClass->setBase($this->testData);
         $this->assertStringContainsString($expected_string, $this->testClass->getBase());
+        $this->assertFileExists($return_path);
+    }
+
+    public function testSaverFromTable()
+    {
+        $test_data = [
+            ['10-12-19', 100, 0, 1000, 0],
+            ['11-12-19', 100, 0, 1100, 0]
+        ];
+        $this->testClass->saverFromTable($test_data);
+        $file_data = file_get_contents($this->testClass->filename);
+        $this->assertStringContainsString('11-12-19', $file_data);
     }
 }
