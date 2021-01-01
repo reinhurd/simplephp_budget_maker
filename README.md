@@ -4,4 +4,7 @@
 Генерация бюджета и сохранение его в файл - комманда show_all
 
 Запуск тестов 
-`vendor/bin/phpunit --bootstrap src/engine.php tests/`
+
+`vendor/bin/phpunit --bootstrap src/engine.php tests/` - linux
+
+`.\vendor\bin\phpunit --bootstrap src/engine.php tests/` - windows
